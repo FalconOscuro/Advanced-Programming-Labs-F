@@ -30,7 +30,15 @@ size_t FileToArray(const char filename[], int*& array)
 	return len;
 }
 
-bool BinarySearch(const int* list, const size_t size, const int value)
+/**
+ * @brief Recursive binary search
+ * 
+ * @param list Pointer to start of array
+ * @param size Array length
+ * @param value Value being searched
+ * @return true if value found in array
+ */
+bool RecBinarySearch(const int* list, const size_t size, const int value)
 {
 	if (size == 0)
 		return false;
@@ -44,11 +52,44 @@ bool BinarySearch(const int* list, const size_t size, const int value)
 	else if (size == 1)
 		return false;
 
+	// Each recursion, pass on a cut down version of the array
+	// array pointer and size relate to currently searched portion of list
 	else if (num > value)
-		return BinarySearch(list, half, value);
+		return RecBinarySearch(list, half, value);
 	
 	else
-		return BinarySearch(list + half + 1, size % 2 ? half : (half - 1), value);
+		return RecBinarySearch(list + half + 1, size % 2 ? half : (half - 1), value);
+}
+
+/**
+ * @brief Iterative binary search
+ * 
+ * @param list Pointer to start of array
+ * @param size Array length
+ * @param value Value being searched
+ * @return true if value found in array
+ */
+bool ItBinarySearch(const int* array, const size_t size, const int value)
+{
+	size_t width = size;
+	size_t start = 0;
+
+	while (true)
+	{
+		size_t half = width / 2;
+
+		if (array[start + half] == value)
+			return true;
+		
+		else if (width <= 1)
+			return false;
+
+		width--;
+		width /= 2;
+
+		if (array[start + half] < value)
+			start += half + 1;
+	}
 }
 	
 int main()
@@ -62,5 +103,6 @@ int main()
 
 	int num;
 	cin >> num;
-	cout << (BinarySearch(array, len, num) ? "true" : "false") << endl;
+	cout << (RecBinarySearch(array, len, num) ? "true" : "false") << endl;
+	cout << (ItBinarySearch(array, len, num) ? "true" : "false") << endl;
 }
