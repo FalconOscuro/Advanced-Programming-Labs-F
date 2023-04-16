@@ -1,0 +1,17 @@
+\section{Templates}
+    \subsection*{Question}
+        Turn the Grid class from lab D into a template class, 
+        allowing it to store any type of number, e.g. float, int, double, into the 2D grid array.
+
+    \subsection*{Reflection}
+        All definitions for grid functions were moved to the header file allowing for full
+        functionality of the template class. 
+        This is often reffered to as an \textit{hpp} file, 
+        containing both the class defintion, as with a normal header file,
+        alongside the class function source code.
+
+    \subsection*{Solution}
+        \begin{listing}[H]
+            \inputminted[firstline=10, lastline=86]{cpp}{../Tasks/01-Templates/Grid.hpp}
+            \caption{Grid.hpp}
+        \end{listing}
