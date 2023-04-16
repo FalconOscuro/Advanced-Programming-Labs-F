@@ -51,7 +51,7 @@ bool BinarySearch(const int* list, const size_t size, const int value)
 		return BinarySearch(list + half + 1, size % 2 ? half : (half - 1), value);
 }
 	
-int main(int, char**)
+int main()
 {
 	int* array;
 	size_t len = FileToArray("binarysearchIn.txt", array);

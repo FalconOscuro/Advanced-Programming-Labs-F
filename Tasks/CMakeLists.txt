@@ -4,3 +4,5 @@ cmake_minimum_required(VERSION 3.16)
 
 # Per task subdirectories
 add_subdirectory(01-Templates)
+
+add_subdirectory(03-BinarySearch)
