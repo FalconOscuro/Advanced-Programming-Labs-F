@@ -105,4 +105,18 @@ int main()
 	cin >> num;
 	cout << (RecBinarySearch(array, len, num) ? "true" : "false") << endl;
 	cout << (ItBinarySearch(array, len, num) ? "true" : "false") << endl;
+
+	int testArray[100];
+
+	for (int i  = 0; i < 100; i++)
+		testArray[i] = i;
+	
+	for (int i = 0; i < 100; i++)
+	{
+		if (!RecBinarySearch(testArray, 100, i))
+			cout << "Recursive failed on " << i << endl;
+		
+		if (!ItBinarySearch(testArray, 100, i))
+			cout << "Iterative failed on " << i << endl;
+	}
 }
